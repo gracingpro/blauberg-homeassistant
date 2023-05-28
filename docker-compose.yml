@@ -1,0 +1,13 @@
+version: "2"
+services:
+  blauberg-homeassistant:
+    image: gracingpro/blauberg-homeassistant:latest
+    container_name: blauberg-homeassistant
+    network_mode: bridge
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
+    ports:
+      - "8006:8006"
+    volumes:
+      - ./config.ini:/opt/blauberg/config.ini
+    restart: always
