@@ -10,3 +10,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 ### Added
 - Initial commit of the service, which includes basic integration features like Modbus connection, MQTT publishing and Home Assistant configuration profile publication.
 
+
+## [1.0.1] - 2023-06-02
+
+### Fixed
+- Fix: Correct parsing for hour metrics in Modbus registers.

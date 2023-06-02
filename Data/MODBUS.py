@@ -78,6 +78,11 @@ class ModBus:
                     value = float((input_registers[input_register] - 65540) / 10)
                 else:
                     value = float(input_registers[input_register] / 10)
+            elif unit == "h":
+                hours = (input_registers[input_register] >> 8) & 0xFF
+                minutes = input_registers[input_register] & 0xFF
+                days = input_registers[input_register + 1]
+                value = int((days * 24) + hours + (minutes / 60))
             else:
                 value = input_registers[input_register]
             if value not in (32768, 3276.8):

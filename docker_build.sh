@@ -1,1 +1,1 @@
-docker buildx build -f Dockerfile --platform linux/amd64,linux/arm64,linux/arm/v7 -t gracingpro/blauberg-homeassistant:1.0.0 -t gracingpro/blauberg-homeassistant:latest .
+docker buildx build -f Dockerfile --platform linux/amd64,linux/arm64,linux/arm/v7 -t gracingpro/blauberg-homeassistant:1.0.1 -t gracingpro/blauberg-homeassistant:latest . --push
