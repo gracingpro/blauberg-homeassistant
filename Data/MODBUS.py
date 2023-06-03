@@ -19,12 +19,17 @@ from References.Icons.HoldingRegisters import holding_registers as icons_holding
 from References.Icons.InputRegisters import input_registers as icons_input_registers
 from Data.Vars import get_description, get_by_name, replace_options, get_key_from_value
 import configparser
+from Data.Logger import logger
 
 configfile = "config.ini"
 config = configparser.ConfigParser()
 config.read(configfile)
 # TCP auto connect on first modbus request
-c = ModbusClient(host=config["Vent"]["ip"], port=502, auto_open=True, auto_close=True)
+try:
+    c = ModbusClient(host=config["Vent"]["ip"], port=502, auto_open=True, auto_close=True, timeout=1)
+except Exception as e:
+    logger.error("MODBUS: Unable to connect to Vent - {}".format(e))
+    exit(1)
 
 
 class ModBus:
@@ -32,7 +37,11 @@ class ModBus:
     def get_coils():
         output = {}
         coils = c.read_coils(0, 25)
-        coils_len = len(coils)
+        try:
+            coils_len = len(coils)
+        except TypeError:
+            logger.error("MODBUS: Unable to connect to Vent")
+            return output
         for coil in range(coils_len):
             output[get_description(variables_coils, coil)] = {"value": coils[coil],
                                                               "description": get_description(description_coils, coil),
@@ -44,7 +53,11 @@ class ModBus:
     def get_discrete_inputs():
         output = {}
         discrete_inputs = c.read_discrete_inputs(0, 19)
-        discrete_inputs_len = len(discrete_inputs)
+        try:
+            discrete_inputs_len = len(discrete_inputs)
+        except TypeError:
+            logger.error("MODBUS: Unable to connect to Vent")
+            return output
         for discrete_input in range(discrete_inputs_len):
             output[get_description(variables_discrete_inputs, discrete_input)] = {
                 "value": discrete_inputs[discrete_input],
@@ -57,7 +70,11 @@ class ModBus:
     def get_alarms():
         output = {}
         alarms = c.read_discrete_inputs(19, 44)
-        alarms_len = len(alarms)
+        try:
+            alarms_len = len(alarms)
+        except TypeError:
+            logger.error("MODBUS: Unable to connect to Vent")
+            return output
         for alarm in range(alarms_len):
             description = get_description(description_alarms, alarm)
             output[get_description(variables_alarms, alarm)] = {"value": alarms[alarm],
@@ -70,7 +87,11 @@ class ModBus:
     def get_input_registers():
         output = {}
         input_registers = c.read_input_registers(0, 51)
-        input_registers_len = len(input_registers)
+        try:
+            input_registers_len = len(input_registers)
+        except TypeError:
+            logger.error("MODBUS: Unable to connect to Vent")
+            return output
         for input_register in range(input_registers_len):
             unit = get_description(units_input_registers, input_register)
             if unit == "°C":
@@ -102,7 +123,11 @@ class ModBus:
     def get_holding_registers():
         output = {}
         holding_registers = c.read_holding_registers(0, 45)
-        holding_registers_len = len(holding_registers)
+        try:
+            holding_registers_len = len(holding_registers)
+        except TypeError:
+            logger.error("MODBUS: Unable to connect to Vent")
+            return output
         for holding_register in range(holding_registers_len):
             unit = get_description(units_holding_registers, holding_register)
             if unit == "°C" and holding_register != 44:

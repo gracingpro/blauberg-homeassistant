@@ -3,6 +3,7 @@ import configparser
 from Data.MODBUS import ModBus
 from Data.BlaubergMQTT import entity_to_hass
 from Data.MQTT import publish_many
+from Data.Logger import logger
 
 configfile = "config.ini"
 config = configparser.ConfigParser()
@@ -37,12 +38,14 @@ def vent_monitor():
         for x in out:
             out_list.append(x)
     publish_many(out_list)
-    print('Published {} messages'.format(len(out_list)))
 
 
+logger.info("MQTT Monitor: Starting")
 while 1 > 0:
     try:
+        logger.info("MQTT Monitor: Running")
         vent_monitor()
-    except:
+    except Exception as e:
+        logger.error("MQTT Monitor: {}".format(e))
         pass
     time.sleep(config.getint("MQTT", "scrape_interval"))

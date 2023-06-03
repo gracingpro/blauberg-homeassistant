@@ -6,6 +6,7 @@ from multiprocessing import Process
 import configparser
 from flask_compress import Compress
 from Data.MODBUS import ModBus
+from Data.Logger import logger
 
 
 configfile = "config.ini"
@@ -29,6 +30,7 @@ Compress(flask_app)
 CORS(flask_app)
 
 app = Api(app=flask_app, security='Bearer Auth', authorizations=authorizations)
+logger.info("Starting Blauberg Home Assistant API")
 
 alarms_ns = app.namespace('Alarms', description='Alarms APIs')
 coils_ns = app.namespace('Coils', description='Coils APIs')
