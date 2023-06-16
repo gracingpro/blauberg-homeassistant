@@ -37,7 +37,10 @@ def vent_monitor():
         out = entity_to_hass(holding_register, holding_registers[holding_register])
         for x in out:
             out_list.append(x)
-    publish_many(out_list)
+    if len(out_list) > 0:
+        publish_many(out_list)
+    else:
+        logger.error("MQTT Monitor: No data to publish")
 
 
 logger.info("MQTT Monitor: Starting")
