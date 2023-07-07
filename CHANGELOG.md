@@ -26,3 +26,6 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 ### Fixed
 - Fix: Fixed Monitor Stuck.
+
+## [1.0.4] - 2023-07-07
+- Fix: Fixed IR_VerMAIN_FMW incorrect icon.

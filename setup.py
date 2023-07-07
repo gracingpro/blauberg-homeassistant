@@ -1,7 +1,7 @@
 from setuptools import setup, find_namespace_packages
 setup(
     name="blauberg-homeassistant",
-    version="1.0.3",
+    version="1.0.4",
     author="Dmitry Nikitin",
     author_email="dima@gracing.pro",
     description="Blauberg Ventilation Integration for Home Assistant",

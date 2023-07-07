@@ -30,7 +30,7 @@ input_registers = {
     31: "mdi:air-filter",
     32: "mdi:gauge",
     33: "mdi:thermometer",
-    34: "mdi-update",
+    34: "mdi:update",
     37: "mdi:power-socket-uk",
     38: "mdi:alarm-light",
     39: "mdi:signal",
