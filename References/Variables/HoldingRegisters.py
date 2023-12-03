@@ -35,6 +35,8 @@ holding_registers = {
     41: "HR_SuSPEED1_PRESS",
     42: "HR_ExSPEED1_PRESS",
     43: "HR_OPERATION_MODE",
-    44: "HR_SetTEMP"
+    44: "HR_SetTEMP",
+    74: "HR_BPS_ROTOR_MODE",
+    75: "HR_SetBpsRotorMANUAL"
 }
 

@@ -122,7 +122,7 @@ class ModBus:
     @staticmethod
     def get_holding_registers():
         output = {}
-        holding_registers = c.read_holding_registers(0, 45)
+        holding_registers = c.read_holding_registers(0, 76)
         try:
             holding_registers_len = len(holding_registers)
         except TypeError:

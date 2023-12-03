@@ -45,6 +45,8 @@ holding_registers = {
     41: "Pa",
     42: "Pa",
     43: None,
-    44: "°C"
+    44: "°C",
+    74: None,
+    75: "%"
 }
 
