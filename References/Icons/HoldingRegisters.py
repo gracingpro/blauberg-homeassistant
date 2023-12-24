@@ -45,6 +45,8 @@ holding_registers = {
     41: "mdi:gauge",
     42: "mdi:gauge",
     43: "mdi:view-list",
-    44: "mdi:thermometer"
+    44: "mdi:thermometer",
+    74: "mdi:view-list",
+    75: "mdi:gauge"
 }
 

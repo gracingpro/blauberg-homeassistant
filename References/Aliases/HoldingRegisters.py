@@ -45,6 +45,8 @@ holding_registers = {
     41: None,
     42: None,
     43: {"0": "Ventilation", "1": "Heating", "2": "Cooling", "3": "Auto"},
-    44: None
+    44: None,
+    74: {"0": "Closed", "1": "Open", "2": "Auto"},
+    75: None
 }
 

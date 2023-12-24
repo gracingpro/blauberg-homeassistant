@@ -35,6 +35,8 @@ holding_registers = {
     41: "Pressure in the supply air duct in Speed 1 mode",
     42: "Pressure in the exhaust air duct in Speed 1 mode",
     43: "Unit operation mode. 0 - ventilation only 1 - heating, 2 - cooling, 3 - auto",
-    44: "Room temperature setpoint in normal mode"
+    44: "Room temperature setpoint in normal mode",
+    74: "Bypass heat exchanger operation mode. 0 - closed, 1 - open, 2 - auto",
+    75: "Manual bypass control with analogue configuration. 0 - closed, 100 - open"
 }
 
